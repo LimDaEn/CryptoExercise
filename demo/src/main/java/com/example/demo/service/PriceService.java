@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.constants.Constants;
 import com.example.demo.dao.Action;
 import com.example.demo.dao.Price;
 import com.example.demo.dao.PriceId;
@@ -47,6 +46,7 @@ public class PriceService {
 
     public BigDecimal getAggregatedPrice(Action action, String commodity){
         List<Price> prices = priceRepo.findByCommodity(commodity);
+
         BigDecimal requestedPrice;
         if(action.isBuy()){
             requestedPrice = prices.get(0).getBuyPrice();

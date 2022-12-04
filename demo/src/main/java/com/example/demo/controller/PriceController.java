@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.Action;
-import com.example.demo.dao.Price;
 import com.example.demo.model.PriceResponse;
 import com.example.demo.service.PriceService;
 import org.springframework.web.bind.annotation.GetMapping;
