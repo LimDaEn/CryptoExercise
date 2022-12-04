@@ -1,23 +1,31 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.Wallet;
+import com.example.demo.model.WalletRequest;
+import com.example.demo.model.WalletResponse;
 import com.example.demo.service.WalletService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
-@RestController("/wallet")
+@RestController
+@RequestMapping("/wallet")
 public class WalletController {
 
     @Resource
     private WalletService walletService;
 
     @GetMapping("/retrieve")
-    public Wallet retrieveWallet(@RequestParam(value = "id") Long id){
-        return new Wallet();
+    public List<WalletResponse> retrieveWallet(@RequestParam(value = "id") int id){
+        return walletService.getWallet(id);
     }
+
+    @PostMapping("/deposit")
+    public WalletResponse deposit(@RequestBody WalletRequest wallet){
+        return walletService.save(wallet);
+    }
+
 
 
 }
