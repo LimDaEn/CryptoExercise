@@ -20,12 +20,4 @@ public class WalletController {
     public List<WalletResponse> retrieveWallet(@RequestParam(value = "id") @NotNull Integer id){
         return walletService.getWallet(id);
     }
-
-    @PostMapping("/deposit")
-    public WalletResponse deposit(@RequestBody WalletRequest wallet){
-        return walletService.save(wallet);
-    }
-
-
-
 }

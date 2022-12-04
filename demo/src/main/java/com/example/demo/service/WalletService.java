@@ -27,11 +27,6 @@ public class WalletService {
     }
 
     @Transactional
-    public WalletResponse save(WalletRequest wallet){
-        return new WalletResponse(walletRepo.save(new Wallet(wallet)));
-    }
-
-    @Transactional
     public void executeTransaction(Transaction transaction) throws TranscationException {
         List<Wallet> wallet = walletRepo.findByUserId(transaction.getUserid());
         if(wallet.isEmpty()){
